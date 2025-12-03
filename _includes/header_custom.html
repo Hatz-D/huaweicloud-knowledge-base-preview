@@ -4,7 +4,12 @@
     {% capture lang_href %}{{ site.url }}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ page.permalink }}{%
     endcapture %}
     <li class="aux-nav-list-item">
-      <a href="{{ lang_href }}" class="site-button">{{ lang }}</a>
+      <a href="{{ lang_href }}" class="site-button">
+        {{ lang }}
+        <!-- site.url = "{{ site.url }}" -->
+        <!-- site.default_lang = "{{ site.default_lang }}" -->
+        <!-- page.permalink = "{{ page.permalink }}" -->
+      </a>
     </li>
     {% endfor %}
   </ul>
