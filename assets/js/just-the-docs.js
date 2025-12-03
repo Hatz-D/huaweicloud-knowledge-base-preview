@@ -126,7 +126,6 @@ function initSearch() {
       if(langPrefix === 'pt') {
         for (var i in docs) {
           var originalUrl = docs[i].url;
-          console.log(originalUrl)
           var parts = originalUrl.split('/');
           parts.splice(urlIndex, 0, 'pt');
           docs[i].url = parts.join('/');
