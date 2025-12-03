@@ -95,14 +95,19 @@ function disableHeadStyleSheets() {
 function initSearch() {
   var path = window.location.pathname
   var endpoint = 'REPO-NAME-PLACEHOLDER';
-  var langPrefixArray = path.split('/');
-  for (var i in langPrefixArray) {
-    if(langPrefixArray[i] == 'pt') {
-      var endpoint = endpoint + '/pt';
-      var langPrefix = 'pt';
-    }
+  var isCNAME = endpoint;
+
+  // If CNAME is used, the URL is one '/' shorter
+  if(isCNAME == '') {
+    var index = 1;
   }
-  endpoint += '/assets/js/search-data.json'
+
+  else {
+    var index = 2;
+  }
+
+  var langPrefix = path.split('/')[index];
+  endpoint = langPrefix === 'pt' ? 'REPO-NAME-PLACEHOLDER/pt/assets/js/search-data.json' : 'REPO-NAME-PLACEHOLDER/assets/js/search-data.json';
 
   if (!endpoint.startsWith('/')) {
     // happens when this is not an empty string: "REPO-NAME-PLACEHOLDER"
@@ -123,7 +128,7 @@ function initSearch() {
         for (var i in docs) {
           var originalUrl = docs[i].url;
           var parts = originalUrl.split('/');
-          parts.splice(2, 0, 'pt');
+          parts.splice(index, 0, 'pt');
           docs[i].url = parts.join('/');
         }
       }
