@@ -1,14 +1,14 @@
 <nav aria-label="Auxiliary" class="aux-nav">
   <ul class="aux-nav-list">
     {% for lang in site.languages %}
-    {% capture lang_href %}{{ site.url }}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ page.permalink }}{%
-    endcapture %}
+    {% capture lang_href %}{{ site.url }}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ page.permalink }}{% endcapture %}
     <li class="aux-nav-list-item">
       <a href="{{ lang_href }}" class="site-button">
         {{ lang }}
         <!-- site.url = "{{ site.url }}" -->
         <!-- site.default_lang = "{{ site.default_lang }}" -->
         <!-- page.permalink = "{{ page.permalink }}" -->
+        <!-- lang != site.default_lang = "{% if lang != site.default_lang %}TRUE{% else %}FALSE{% endif %}" -->
       </a>
     </li>
     {% endfor %}
