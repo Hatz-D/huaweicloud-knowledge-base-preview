@@ -94,10 +94,13 @@ function disableHeadStyleSheets() {
 
 function initSearch() {
   var path = window.location.pathname
-  var langPrefix = path.split('/')[2];
-  console.log(path)
-  console.log(langPrefix)
-  var endpoint = langPrefix === 'pt' ? 'REPO-NAME-PLACEHOLDER/pt' : 'REPO-NAME-PLACEHOLDER';
+  var endpoint = 'REPO-NAME-PLACEHOLDER';
+  var langPrefixArray = path.split('/');
+  for (var i in langPrefixArray) {
+    if(langPrefixArray[i] == 'pt') {
+      var endpoint = endpoint + '/pt';
+    }
+  }
   endpoint += '/assets/js/search-data.json'
 
   if (!endpoint.startsWith('/')) {
