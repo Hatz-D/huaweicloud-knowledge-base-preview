@@ -97,15 +97,15 @@ function initSearch() {
   var endpoint = 'REPO-NAME-PLACEHOLDER';
 
   // If CNAME is used, the URL is one '/' shorter
-  if(endpoint == '') {
-    var index = 1;
+  if(endpoint === '') {
+    var urlIndex = 1;
   }
 
   else {
-    var index = 2;
+    var urlIndex = 2;
   }
 
-  var langPrefix = path.split('/')[index];
+  var langPrefix = path.split('/')[urlIndex];
   endpoint = langPrefix === 'pt' ? 'REPO-NAME-PLACEHOLDER/pt/assets/js/search-data.json' : 'REPO-NAME-PLACEHOLDER/assets/js/search-data.json';
 
   if (!endpoint.startsWith('/')) {
@@ -128,7 +128,7 @@ function initSearch() {
           var originalUrl = docs[i].url;
           console.log(originalUrl)
           var parts = originalUrl.split('/');
-          parts.splice(2, 0, 'pt');
+          parts.splice(urlIndex, 0, 'pt');
           docs[i].url = parts.join('/');
         }
       }
