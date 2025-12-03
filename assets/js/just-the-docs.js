@@ -95,6 +95,8 @@ function disableHeadStyleSheets() {
 function initSearch() {
   var path = window.location.pathname
   var langPrefix = path.split('/')[2];
+  console.log(path)
+  console.log(langPrefix)
   var endpoint = langPrefix === 'pt' ? 'REPO-NAME-PLACEHOLDER/pt' : 'REPO-NAME-PLACEHOLDER';
   endpoint += '/assets/js/search-data.json'
 
